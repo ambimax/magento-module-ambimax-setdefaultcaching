@@ -1,0 +1,44 @@
+language: php
+sudo: false
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+
+env:
+  global:
+    - MAGENTO_DB_ALLOWSAME=1
+    - SKIP_CLEANUP=1
+    - MAGETESTSTAND_URL=https://github.com/ambimax/MageTestStand.git
+    - secure: "TBSrHGDetpeI139PNQREy4McUYkdyLxuCXDqX9c4RmnukCMzSwrcW1SZT3/d4tNuyo+wIbjeOC6sG1wP221M2kq++xNcbBg6X0sBi9bUuBxC5VZFJjTEPGPT4M6jVyTc50DHmlU9uzjDpc+lRmjzs51cPY7mo/DnTGYUDt7uKCBNWkflqqlwUu2x7Cc3z3aN6P/68KmIf2aAFXOkGQ8Gf5Bn5xYlTxjGEqKBdrD6PfJb4vvcFncSX+Z1TetlsG2NKS9i3akjg1iaBfvv9YphpzgQngxQ4nwZb5SqEuG/Sn10TeNiSS6Nq5uEyvL6JSzTopRIISTqNCM+Tu9QK4TasG+1xhpkvxWeFpZB9Uo/UK1XIJbXk5wWnzy7hA4yyq93nUA6USiEKJfA2ZOn/9GxYy8HTclUMIDyEFytFNE6Jvk7zh6HXS5kFdtBDBBFwk0wyHKJQJ3QggZ/E+sY7ISGHWUN4nc0AARfq+O36gPO/WwElwR2Lv9wRNZIMv0oMbgVCOZxUHhoRlEYJ8lIXdEpQqDAlnDXoMpFjgMzju64bf2f5miqE4tyAEzqwkQ8FzgAOB1KvAEPx6ys3V/IIGzo4h+341xCHI1iVcJyvlnqY+/VxQNJgzJ4eYLA3w1oxdBabZ+t1X2gWv4hj2XqorSNonUPnTWEovFeGWCDWqjXKzk="
+
+  matrix:
+    - MAGENTO_VERSION=magento-mirror-1.8.1.0
+    - MAGENTO_VERSION=magento-mirror-1.9.3.8
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: 7.1
+
+addons:
+  mariadb: '10.1'
+
+before_install:
+  - composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+
+script:
+  - curl --retry 2 --retry-delay 5 -f -sSL https://raw.githubusercontent.com/ambimax/MageTestStand/master/setup.sh | bash
+
+after_failure:
+  - ls -lah /tmp/mageteststand.*/
+  - ls -lah /tmp/mageteststand.*/.modman/
+  - ls -lah /tmp/mageteststand.*/.modman/magento-module-ambimax-setdefaultcaching/
+  - ls -lah /tmp/mageteststand.*/htdocs/
+  - ls -lah /tmp/mageteststand.*/vendor/
+  - ls -lah /tmp/mageteststand.*/bin/
+  - (cd /tmp/mageteststand.*/ && bin/phpunit --version)
+
+notifications:
+  slack: ambimax:2MlPTX9bY9aPxCPhJGxHKIT6

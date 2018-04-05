@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ambimax_SetDefaultCaching>
+            <version>1.0.0</version>
+        </Ambimax_SetDefaultCaching>
+    </modules>
+
+    <global>
+        <blocks>
+            <ambimax_setdefaultcaching>
+                <class>Ambimax_SetDefaultCaching_Block</class>
+            </ambimax_setdefaultcaching>
+        </blocks>
+
+        <helpers>
+            <ambimax_setdefaultcaching>
+                <class>Ambimax_SetDefaultCaching_Helper</class>
+            </ambimax_setdefaultcaching>
+        </helpers>
+
+        <models>
+            <ambimax_setdefaultcaching>
+                <class>Ambimax_SetDefaultCaching_Model</class>
+            </ambimax_setdefaultcaching>
+        </models>
+
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <ambimax_setdefaultcaching>
+                        <class>ambimax_setdefaultcaching/observer</class>
+                        <method>setDefaultBlockCaching</method>
+                    </ambimax_setdefaultcaching>
+                </observers>
+            </core_block_abstract_to_html_before>
+        </events>
+    </global>
+
+    <default>
+        <catalog>
+            <ambimax_setdefaultcaching>
+                <enabled>0</enabled>
+                <force>0</force>
+                <page_html_head>86400</page_html_head>
+                <page_html_breadcrumbs>86400</page_html_breadcrumbs>
+                <catalog_product_view>86400</catalog_product_view>
+                <catalog_category_view>86400</catalog_category_view>
+                <catalog_layer_view>86400</catalog_layer_view>
+                <cms_block>86400</cms_block>
+                <cms_page>86400</cms_page>
+            </ambimax_setdefaultcaching>
+        </catalog>
+    </default>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Ambimax_SetDefaultCaching/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>

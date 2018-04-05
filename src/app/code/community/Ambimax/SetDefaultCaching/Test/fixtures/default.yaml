@@ -1,0 +1,17 @@
+---
+
+registry:
+   singleton:
+      - core/session
+
+
+config:
+  default/catalog/ambimax_setdefaultcaching/enabled: 1
+  default/catalog/ambimax_setdefaultcaching/force: 1
+  default/catalog/ambimax_setdefaultcaching/page_html_head: 86401
+  default/catalog/ambimax_setdefaultcaching/catalog_product_view: 86402
+  default/catalog/ambimax_setdefaultcaching/page_html_breadcrumbs: 86403
+  default/catalog/ambimax_setdefaultcaching/catalog_category_view: 86404
+  default/catalog/ambimax_setdefaultcaching/catalog_layer_view: 86405
+  default/catalog/ambimax_setdefaultcaching/cms_block: 86406
+  default/catalog/ambimax_setdefaultcaching/cms_page: 86407

@@ -1,0 +1,38 @@
+<style>
+    .ambimax-setdefaultcaching-cacheinfo table.cacheinfo {
+        border-collapse: collapse;
+    }
+
+    .ambimax-setdefaultcaching-cacheinfo table.cacheinfo, .cacheinfo th, .cacheinfo td {
+        border: 1px solid black;
+        padding: 4px;
+    }
+</style>
+
+<div class="ambimax-setdefaultcaching-cacheinfo">
+    <table cellspacing="0" class="cacheinfo form-list">
+        <thead>
+            <tr>
+                <th>Cache Lifetime Value</th>
+                <th>What happens</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>null</td>
+                <td>no caching</td>
+            </tr>
+            <tr>
+                <td>0 / false</td>
+                <td>cache forever</td>
+            </tr>
+            <tr>
+                <td>&gt; 0</td>
+                <td>cache for X seconds</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>More information on <a target="_blank" href="http://fbrnc.net/blog/2015/06/cache-and-layout-xml-tricks">cache and layout xml tricks</a></p>
+
+</div>
