@@ -4,6 +4,12 @@
 
 Sets default caching lifetime in Magento 1.
 
+## Configuration
+
+Some block types can be set with a default cache lifetime. The settings can be found in `System > Configuration > Catalog`
+
+![Module configuration](docs/configuration.jpg)
+
 ##  Installation
 
 For installation use composer or copy files manually.
