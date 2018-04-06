@@ -59,6 +59,8 @@ class Ambimax_SetDefaultCaching_Test_Model_ObserverTest extends EcomDev_PHPUnit_
         $this->replaceByMock('singleton', 'core/session', $coreSessionMock);
 
         $this->_singleton = Mage::getSingleton('ambimax_setdefaultcaching/observer');
+
+        Mage::register('current_product', new Varien_Object(['id' => 1]), true);
     }
 
     /**

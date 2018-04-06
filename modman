@@ -1,3 +1,5 @@
 src/app/code/community/Ambimax/SetDefaultCaching                            app/code/community/Ambimax/SetDefaultCaching
 src/app/etc/modules/Ambimax_SetDefaultCaching.xml                           app/etc/modules/Ambimax_SetDefaultCaching.xml
 src/app/design/adminhtml/default/default/template/ambimax/setdefaultcaching app/design/adminhtml/default/default/template/ambimax/setdefaultcaching
+
+src/app/code/local/Mage/Core/Block/Template.php                             app/code/local/Mage/Core/Block/Template.php
