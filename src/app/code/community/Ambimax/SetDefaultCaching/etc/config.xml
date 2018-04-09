@@ -11,6 +11,11 @@
             <ambimax_setdefaultcaching>
                 <class>Ambimax_SetDefaultCaching_Block</class>
             </ambimax_setdefaultcaching>
+            <cms>
+                <rewrite>
+                    <page>Ambimax_SetDefaultCaching_Block_Cms_Page</page>
+                </rewrite>
+            </cms>
         </blocks>
 
         <helpers>

@@ -6,6 +6,7 @@ class Ambimax_SetDefaultCaching_Model_Observer
 
     /**
      * @param Varien_Event_Observer $observer
+     * @throws Mage_Core_Model_Store_Exception
      * @throws Varien_Exception
      */
     public function setDefaultBlockCaching(Varien_Event_Observer $observer)
@@ -17,35 +18,43 @@ class Ambimax_SetDefaultCaching_Model_Observer
         }
 
         if ( $block instanceof Mage_Page_Block_Html_Head ) {
+            /** @var Mage_Page_Block_Html_Head $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/page_html_head');
             $block->addCacheKeyInfo($this->getRequestUri());
         }
 
         if ( $block instanceof Mage_Catalog_Block_Product_View ) {
+            /** @var Mage_Catalog_Block_Product_View $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/catalog_product_view');
             $block->addCacheKeyInfo(Mage::registry('current_product')->getId());
         }
 
         if ( $block instanceof Mage_Page_Block_Html_Breadcrumbs ) {
+            /** @var Mage_Page_Block_Html_Breadcrumbs $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/page_html_breadcrumbs');
         }
 
         if ( $block instanceof Mage_Catalog_Block_Category_View ) {
+            /** @var Mage_Catalog_Block_Category_View $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/catalog_category_view');
             $block->addCacheKeyInfo($this->getRequestUri());
         }
 
         if ( $block instanceof Mage_Catalog_Block_Layer_View ) {
+            /** @var Mage_Catalog_Block_Layer_View $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/catalog_layer_view');
             $block->addCacheKeyInfo($this->getRequestUri());
         }
 
         if ( $block instanceof Mage_Cms_Block_Block ) {
+            /** @var Mage_Cms_Block_Block $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/cms_block');
         }
 
         if ( $block instanceof Mage_Cms_Block_Page ) {
+            /** @var Mage_Cms_Block_Page $block */
             $this->_setCacheLifetime($block, 'catalog/ambimax_setdefaultcaching/cms_page');
+            $block->addCacheKeyInfo(Mage::app()->getStore()->getCode());
         }
     }
 

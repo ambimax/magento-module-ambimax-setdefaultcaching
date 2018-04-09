@@ -333,6 +333,7 @@ HTML;
      * Get cache key informative items
      *
      * @return array
+     * @throws Mage_Core_Model_Store_Exception
      */
     public function getCacheKeyInfo()
     {
@@ -361,6 +362,10 @@ HTML;
         return $this->_allowSymlinks;
     }
 
+    /**
+     * @param $cacheKey
+     * @throws Varien_Exception
+     */
     public function addCacheKeyInfo($cacheKey)
     {
         $keys = $this->getCacheKeyInfo();

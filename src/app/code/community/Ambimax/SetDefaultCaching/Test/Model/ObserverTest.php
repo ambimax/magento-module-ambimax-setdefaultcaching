@@ -63,6 +63,14 @@ class Ambimax_SetDefaultCaching_Test_Model_ObserverTest extends EcomDev_PHPUnit_
         Mage::register('current_product', new Varien_Object(['id' => 1]), true);
     }
 
+    public function testPageBlockIsRewritten()
+    {
+        $this->assertInstanceOf(
+            Ambimax_SetDefaultCaching_Block_Cms_Page::class,
+            Mage::app()->getLayout()->createBlock('cms/page')
+        );
+    }
+
     /**
      * @loadFixture ~Ambimax_SetDefaultCaching/default
      * @throws Varien_Exception
@@ -75,7 +83,7 @@ class Ambimax_SetDefaultCaching_Test_Model_ObserverTest extends EcomDev_PHPUnit_
         $this->assertDefaultCacheLifetime(86404, 'Mage_Catalog_Block_Category_View');
         $this->assertDefaultCacheLifetime(86405, 'Mage_Catalog_Block_Layer_View');
         $this->assertDefaultCacheLifetime(86406, 'Mage_Cms_Block_Block');
-        $this->assertDefaultCacheLifetime(86407, 'Mage_Cms_Block_Page');
+        $this->assertDefaultCacheLifetime(86407, 'Ambimax_SetDefaultCaching_Block_Cms_Page');
     }
 
     /**
@@ -86,7 +94,7 @@ class Ambimax_SetDefaultCaching_Test_Model_ObserverTest extends EcomDev_PHPUnit_
     {
         $this->assertDefaultCacheLifetime(200, 'Mage_Page_Block_Html_Head', 200);
         $this->assertDefaultCacheLifetime(false, 'Mage_Cms_Block_Block', false);
-        $this->assertDefaultCacheLifetime(0, 'Mage_Cms_Block_Page', 0);
+        $this->assertDefaultCacheLifetime(0, 'Ambimax_SetDefaultCaching_Block_Cms_Page', 0);
     }
 
     /**
@@ -101,6 +109,6 @@ class Ambimax_SetDefaultCaching_Test_Model_ObserverTest extends EcomDev_PHPUnit_
         $this->assertDefaultCacheLifetime(400, 'Mage_Catalog_Block_Category_View');
         $this->assertDefaultCacheLifetime(200, 'Mage_Catalog_Block_Layer_View');
         $this->assertDefaultCacheLifetime(0, 'Mage_Cms_Block_Block');
-        $this->assertDefaultCacheLifetime(null, 'Mage_Cms_Block_Page');
+        $this->assertDefaultCacheLifetime(null, 'Ambimax_SetDefaultCaching_Block_Cms_Page');
     }
 }
